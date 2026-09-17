@@ -1,0 +1,30 @@
+name: Compilar SmartApps PDV (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Generar instalador de Windows
+        run: npm run dist
+
+      - name: Subir el instalador como descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartApps-PDV-Instalador-Windows
+          path: dist/*.exe
