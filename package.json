@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.smartapps.pdv",
     "productName": "SmartApps PDV",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
