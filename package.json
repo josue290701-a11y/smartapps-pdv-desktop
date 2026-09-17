@@ -6,7 +6,7 @@
   "author": "SmartApps",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win"--publish=never
+    "dist": "electron-builder --win" --publish=never
   },
   "devDependencies": {
     "electron": "^31.0.0",
