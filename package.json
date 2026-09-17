@@ -1,0 +1,44 @@
+{
+  "name": "smartapps-pdv-desktop",
+  "version": "1.0.0",
+  "description": "SmartApps PDV - App de escritorio",
+  "main": "main.js",
+  "author": "SmartApps",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.smartapps.pdv",
+    "productName": "SmartApps PDV",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload-print.js",
+      "icon.png",
+      "icon.ico"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SmartApps PDV"
+    }
+  }
+}
