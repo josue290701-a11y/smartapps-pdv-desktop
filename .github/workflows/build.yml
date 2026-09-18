@@ -1,0 +1,23 @@
+name: Crear instalador
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Descomprimir proyecto
+        shell: pwsh
+        run: Expand-Archive -Path SmartApps-PDV-Escritorio.zip -DestinationPath . -Force
+      - name: Crear instaladores
+        working-directory: SmartApps-PDV-Escritorio
+        run: |
+          npm install
+          npm run dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmartApps-PDV-Instaladores
+          path: SmartApps-PDV-Escritorio/dist/*.exe
